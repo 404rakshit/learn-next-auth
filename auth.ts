@@ -8,6 +8,12 @@ export const {
     signIn,
     signOut
 } = NextAuth({
+    callbacks: {
+        authorized: async ({ auth }) => {
+            // Logged in users are authenticated, otherwise redirect to login page
+            return !!auth
+        },
+    },
     adapter: PrismaAdapter(prisma),
     session: {
         strategy: "jwt"

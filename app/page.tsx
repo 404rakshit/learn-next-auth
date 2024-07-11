@@ -1,9 +1,11 @@
-import Image from "next/image";
+import { auth } from "@/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <h2 className="text-4xl font-bold">Homepage</h2>
+       <p>{JSON.stringify(session?.user)}</p> 
     </div>
   );
 }
