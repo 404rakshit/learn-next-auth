@@ -62,7 +62,7 @@ function AuthButton() {
 export default function NavMenu() {
     return (
         <div>
-            <AuthButton />
+            {/* <AuthButton /> */}
         </div>
     )
 }
