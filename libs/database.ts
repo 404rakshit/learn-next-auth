@@ -1,9 +1,10 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client/edge"
+import { withAccelerate } from '@prisma/extension-accelerate'
 
-declare global {
-    var prisma: PrismaClient | undefined
-}
+// declare global {
+//     var prisma: PrismaClient | undefined
+// }
 
-export const prisma: PrismaClient = global.prisma || new PrismaClient()
+export const prisma = new PrismaClient().$extends(withAccelerate())
 
-if (process.env.NODE_ENV === "development") global.prisma = prisma
+// if (process.env.NODE_ENV === "development") global.prisma = prisma

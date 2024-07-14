@@ -8,6 +8,7 @@ export default {
     providers: [Github({
         clientId: process.env.GITHUB_ID,
         clientSecret: process.env.GITHUB_SECRET,
+        allowDangerousEmailAccountLinking: true
     }), Resend({
         apiKey: process.env.RESEND_API_KEY,
         from: "no-reply@mail.thequotesgram.com"

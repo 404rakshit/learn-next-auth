@@ -9,14 +9,24 @@ export const {
     signOut
 } = NextAuth({
     callbacks: {
+        signIn: async ({ user }) => {
+            await prisma.session.deleteMany({
+                where: { userId: user.id }
+            })
+            return true
+        },
         authorized: async ({ auth }) => {
             // Logged in users are authenticated, otherwise redirect to login page
             return !!auth
         },
     },
+    pages: {
+        signOut: "/"
+    },
     adapter: PrismaAdapter(prisma),
     session: {
-        strategy: "jwt"
+        strategy: "database",
+        maxAge: 24 * 60 * 60
     },
     ...authConfig
 })

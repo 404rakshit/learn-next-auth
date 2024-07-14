@@ -7,6 +7,9 @@ export default auth((req) => {
     const AuthRoute = ["/dashboard", "/middleware"].includes(nextUrl.pathname)
     const isLogged = !!req.auth
 
+    // console.log(req.auth);
+    
+
     if (AuthRoute) {
         if (!isLogged) {
             const newUrl = new URL("/api/auth/signin", req.nextUrl.origin)
