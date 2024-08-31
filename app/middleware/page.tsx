@@ -1,5 +1,7 @@
 import { auth } from "@/auth"
 
+export const dynamic = "force-static";
+
 export default async function ProtectedRoute() {
 
     const session = await auth()

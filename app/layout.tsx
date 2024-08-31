@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavMenu from "@/components/nav-menu";
-import SessionProvider from "@/utils/sessionProvider";
 import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,19 +16,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const session = await auth()
+  const session = await auth();
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SessionProvider session={session}>
+      <SessionProvider session={session}>
+        <body className={inter.className}>
           <main className="mx-auto max-w-6xl flex flex-col gap-2 py-5 lg:py-10 px-5">
             <NavMenu />
             {children}
           </main>
-        </SessionProvider>
-      </body>
+        </body>
+      </SessionProvider>
     </html>
   );
 }
