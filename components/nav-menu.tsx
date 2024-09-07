@@ -14,25 +14,13 @@ function AuthButton() {
             path: "/"
         },
         {
-            title: "Middleware",
-            path: "/middleware"
+            title: "Dashboard",
+            path: "/dashboard"
         },
         {
-            title: "Protected",
-            path: "/protected"
-        },
-        {
-            title: "Server Action",
-            path: "/server-action"
-        },
-        {
-            title: "Client API",
-            path: "/client-api"
-        },
-        {
-            title: "Server API (RSC)",
-            path: "/server-api"
-        },
+            title: "Client",
+            path: "/client"
+        }
     ]
 
     return (
